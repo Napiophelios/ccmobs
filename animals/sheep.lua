@@ -90,8 +90,8 @@ mobs:register_mob("ccmobs:sheep", {
 })
 
 minetest.register_craftitem("ccmobs:sheep", {
-	description = "Sheep",
-	inventory_image = "sheep_front.png",
+	description = "Sheep  Spawnegg",
+	inventory_image = "ccmobs_spawnegg_sheep.png",
 	on_place = function(itemstack, placer, pointed_thing)
 		if pointed_thing.above then
 			minetest.env:add_entity(pointed_thing.above, "ccmobs:sheep")

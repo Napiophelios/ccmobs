@@ -67,8 +67,8 @@ mobs:register_mob("ccmobs:cow", {
 })
 
 minetest.register_craftitem("ccmobs:cow", {
-	description = "Cow",
-	inventory_image = "cow_front.png",
+	description = "Cow Spawnegg",
+	inventory_image = "ccmobs_spawnegg_cow.png",
 	on_place = function(itemstack, placer, pointed_thing)
 		if pointed_thing.above then
             minetest.sound_play("ccmobs_cow",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})

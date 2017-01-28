@@ -3,6 +3,7 @@
 --
 --local CHICKEN_SPAWN = false
 local COW_SPAWN = true
+local GOAT_SPAWN = true
 --local NYAN_CAT_SPAWN = false
 local PIG_SPAWN = true
 --local RABBIT_SPAWN = false
@@ -11,6 +12,7 @@ local SHEEP_SPAWN = true
 dofile(minetest.get_modpath("ccmobs").."/api.lua")
 --dofile(minetest.get_modpath("ccmobs").."/animals/chicken.lua")
 dofile(minetest.get_modpath("ccmobs").."/animals/cow.lua")
+dofile(minetest.get_modpath("ccmobs").."/animals/goat.lua")
 --dofile(minetest.get_modpath("ccmobs").."/animals/nyan_cat.lua")
 dofile(minetest.get_modpath("ccmobs").."/animals/pig.lua")
 --dofile(minetest.get_modpath("ccmobs").."/animals/rabbit.lua")
@@ -24,6 +26,10 @@ dofile(minetest.get_modpath("ccmobs").."/animals/sheep.lua")
 
 if COW_SPAWN then
 	mobs:register_spawn("ccmobs:cow", {"default:dirt_with_grass"}, 20, 8, 10000, 1, 31000)
+end
+
+if GOAT_SPAWN then
+	mobs:register_spawn("ccmobs:goat", {"default:dirt_with_grass"}, 20, 8, 20000, 1, 31000)
 end
 
 --if NYAN_CAT_SPAWN then
@@ -54,18 +60,18 @@ minetest.register_craft({
 
 minetest.register_craftitem("ccmobs:cage", {
 	description = "animal cage",
-	inventory_image = "cage.png"
+	inventory_image = "ccmobs_cage.png"
 })
 
 minetest.register_craftitem("ccmobs:meat_raw", {
 	description = "raw meat",
-	inventory_image = "meat_raw.png",
+	inventory_image = "ccmobs_meat_raw.png",
 	on_use = minetest.item_eat(0),
 })
 
 minetest.register_craftitem("ccmobs:meat_cooked", {
 	description = "cooked meat",
-	inventory_image = "meat_cooked.png",
+	inventory_image = "ccmobs_meat_cooked.png",
 	on_use = minetest.item_eat(6),
 })
 
@@ -77,7 +83,7 @@ minetest.register_craft({
 
 minetest.register_craftitem("ccmobs:bucket_milk", {
 	description = "bucket with milk",
-	inventory_image = "bucket_milk.png",
+	inventory_image = "ccmobs_bucket_milk.png",
 	groups = {not_in_creative_inventory = 1},
 	stack_max = 1,
 })
