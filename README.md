@@ -21,6 +21,7 @@ This mod adds following animals:
 - goat
 - pig
 - sheep
+- rockmonster
 - treemonster
 
 This mod adds following items:

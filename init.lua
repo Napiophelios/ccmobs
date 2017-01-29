@@ -4,6 +4,7 @@
 local COW_SPAWN = true
 local GOAT_SPAWN = true
 local PIG_SPAWN = true
+local ROCKMONSTER_SPAWN = true
 local SHEEP_SPAWN = true
 local TREEMONSTER_SPAWN = true
 
@@ -11,6 +12,7 @@ dofile(minetest.get_modpath("ccmobs").."/api.lua")
 dofile(minetest.get_modpath("ccmobs").."/animals/cow.lua")
 dofile(minetest.get_modpath("ccmobs").."/animals/goat.lua")
 dofile(minetest.get_modpath("ccmobs").."/animals/pig.lua")
+dofile(minetest.get_modpath("ccmobs").."/monsters/rockmonster.lua")
 dofile(minetest.get_modpath("ccmobs").."/animals/sheep.lua")
 dofile(minetest.get_modpath("ccmobs").."/monsters/treemonster.lua")
 
@@ -30,6 +32,10 @@ end
 
 if SHEEP_SPAWN then
 	mobs:register_spawn("ccmobs:sheep", {"default:dirt_with_grass"}, 20, 8, 8000, 1, 31000)
+end
+
+if ROCKMONSTER_SPAWN then
+	mobs:register_spawn("ccmobs:rockmonster", {"default:stone"}, 8, 1, 8000, 1, 31000)
 end
 
 if TREEMONSTER_SPAWN then
