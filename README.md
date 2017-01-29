@@ -18,10 +18,10 @@ https://github.com/RHRhino/mt_mods/tree/master/ccmobs
 
 This mod adds following animals:
 - cow
--goat
+- goat
 - pig
 - sheep
--treemonster
+- treemonster
 
 This mod adds following items:
 - animal cage
@@ -41,5 +41,6 @@ This mod uses PilzAdam's simple mob api.
 =====================
 
 ![Preview](https://raw.githubusercontent.com/Napiophelios/ccmobs/master/screenshot.png)![Preview](https://raw.githubusercontent.com/Napiophelios/ccmobs/master/screenshot_2.png)
+![Preview](https://raw.githubusercontent.com/Napiophelios/ccmobs/master/screenshot_3.png)
 
 =====================
