@@ -1,28 +1,20 @@
 --
 --SPAWNING: [true --or-- false]
 --
---local CHICKEN_SPAWN = false
 local COW_SPAWN = true
 local GOAT_SPAWN = true
---local NYAN_CAT_SPAWN = false
 local PIG_SPAWN = true
---local RABBIT_SPAWN = false
 local SHEEP_SPAWN = true
+local TREEMONSTER_SPAWN = true
 
 dofile(minetest.get_modpath("ccmobs").."/api.lua")
---dofile(minetest.get_modpath("ccmobs").."/animals/chicken.lua")
 dofile(minetest.get_modpath("ccmobs").."/animals/cow.lua")
 dofile(minetest.get_modpath("ccmobs").."/animals/goat.lua")
---dofile(minetest.get_modpath("ccmobs").."/animals/nyan_cat.lua")
 dofile(minetest.get_modpath("ccmobs").."/animals/pig.lua")
---dofile(minetest.get_modpath("ccmobs").."/animals/rabbit.lua")
 dofile(minetest.get_modpath("ccmobs").."/animals/sheep.lua")
+dofile(minetest.get_modpath("ccmobs").."/monsters/treemonster.lua")
 
 --mobs:register_spawn(name, nodes, max_light, min_light, chance, active_object_count, max_height, spawn_func)
-
---if CHICKEN_SPAWN then
---	mobs:register_spawn("ccmobs:chicken", {"default:dirt_with_grass"}, 20, 8, 80000, 1, 31000)
---end
 
 if COW_SPAWN then
 	mobs:register_spawn("ccmobs:cow", {"default:dirt_with_grass"}, 20, 8, 10000, 1, 31000)
@@ -32,21 +24,18 @@ if GOAT_SPAWN then
 	mobs:register_spawn("ccmobs:goat", {"default:dirt_with_grass"}, 20, 8, 20000, 1, 31000)
 end
 
---if NYAN_CAT_SPAWN then
---	mobs:register_spawn("ccmobs:nyan_cat", {"default:dirt_with_grass"}, 20, 8, 80000, 1, 31000)
---end
-
 if PIG_SPAWN then
 	mobs:register_spawn("ccmobs:pig", {"default:dirt_with_grass"}, 20, 8, 20000, 1, 31000)
 end
 
---if RABBIT_SPAWN then
---	mobs:register_spawn("ccmobs:rabbit", {"default:dirt_with_grass"}, 20, 8, 80000, 1, 31000)
---end
-
 if SHEEP_SPAWN then
 	mobs:register_spawn("ccmobs:sheep", {"default:dirt_with_grass"}, 20, 8, 8000, 1, 31000)
 end
+
+if TREEMONSTER_SPAWN then
+	mobs:register_spawn("ccmobs:treemonster", {"default:dirt_with_grass"}, 8, 1, 8000, 1, 31000)
+end
+
 
 
 minetest.register_craft({
