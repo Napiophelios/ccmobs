@@ -31,27 +31,31 @@ minetest.register_node("ccmobs:rockmonster_block", {
 
 mobs:register_mob("ccmobs:rockmonster", {
 	type = "monster",
-	hp_max = 18,
+	hp_max = 10,
 	collisionbox = {-0.8, -0.75, -0.8, 0.8, 1.5, 0.8},
 	visual = "wielditem",
-	visual_size = {x = 1.0, y = 1.0},
 	textures = {"ccmobs:rockmonster_block"},
+	visual_size = {x = 1.0, y = 1.0},
 	makes_footstep_sound = false,
-	walk_velocity = 0.05,
-    run_velocity = 0.15,
-	armor = 100,
+	view_range = 10,
+	walk_velocity = 0.5,
+	run_velocity = 2,
+	damage = 3,
 	drops = {
 		{name = "default:stone",
 		chance = 1,
-		min = 1,
-		max = 3,},
-		},
+		min = 2,
+		max = 5,},
+	},
+	light_resistant = true,
+	armor = 80,
 	drawtype = "front",
-	water_damage = 1,
-	lava_damage = 1,
-	light_damage = 1,
+	water_damage = 0,
+	lava_damage = 0,
+	light_damage = 0,
+	attack_type = "dogfight",
     sounds = {
-		random = "ccmobs_rockmonster",
+        random = "ccmobs_rockmonster",
 	},
 	on_rightclick = function(self, clicker)
 		tool = clicker:get_wielded_item():get_name()
@@ -69,7 +73,7 @@ minetest.register_craftitem("ccmobs:rockmonster", {
 	inventory_image = "ccmobs_spawnegg_rockmonster.png",
 	on_place = function(itemstack, placer, pointed_thing)
 		if pointed_thing.above then
-                minetest.sound_play("ccmobs_rockmonster",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
+            minetest.sound_play("ccmobs_rockmonster",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
 			minetest.env:add_entity(pointed_thing.above, "ccmobs:rockmonster")
 			if minetest.setting_getbool("creative_mode") then
 				itemstack:take_item()

@@ -33,35 +33,44 @@ minetest.register_node("ccmobs:treemonster_block", {
 
 mobs:register_mob("ccmobs:treemonster", {
 	type = "monster",
-	hp_max = 10,
+	hp_max = 5,
 	collisionbox = {-0.8, -1.0, -0.8, 0.85, 1.65, 0.85},
 	visual = "wielditem",
-	visual_size = {x = 1.0, y = 1.25},
 	textures = {"ccmobs:treemonster_block"},
+	visual_size = {x = 1.0, y = 1.25},
 	makes_footstep_sound = false,
-	walk_velocity = 0.25,
-    run_velocity = 0.45,
-	armor = 100,
+	view_range = 15,
+	walk_velocity = 1,
+	run_velocity = 3,
+	damage = 2,
 	drops = {
-		{name = "default:tree",
-		chance = 1,
+		{name = "default:sapling",
+		chance = 3,
 		min = 1,
-		max = 1,},
-		},
+		max = 2,},
+		{name = "default:tree",
+		chance = 3,
+		min = 1,
+		max = 3,},
+	},
+	light_resistant = true,
+	armor = 100,
 	drawtype = "front",
 	water_damage = 1,
-	lava_damage = 10,
-	light_damage = 1,
+	lava_damage = 5,
+	light_damage = 2,
+	disable_fall_damage = true,
+	attack_type = "dogfight",
     sounds = {
 		random = "ccmobs_treemonster",
 	},
 	on_rightclick = function(self, clicker)
 		tool = clicker:get_wielded_item():get_name()
 		if tool == "ccmobs:cage" then
-                minetest.sound_play("ccmobs_treemonster",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
-				clicker:get_inventory():remove_item("main", "ccmobs:cage")
-				clicker:get_inventory():add_item("main", "ccmobs:treemonster")
-				self.object:remove()
+            minetest.sound_play("ccmobs_treemonster",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
+            clicker:get_inventory():remove_item("main", "ccmobs:cage")
+            clicker:get_inventory():add_item("main", "ccmobs:treemonster")
+            self.object:remove()
 		end
 	end,
 })
@@ -71,7 +80,7 @@ minetest.register_craftitem("ccmobs:treemonster", {
 	inventory_image = "ccmobs_spawnegg_treemonster.png",
 	on_place = function(itemstack, placer, pointed_thing)
 		if pointed_thing.above then
-                minetest.sound_play("ccmobs_treemonster",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
+            minetest.sound_play("ccmobs_treemonster",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
 			minetest.env:add_entity(pointed_thing.above, "ccmobs:treemonster")
 			if minetest.setting_getbool("creative_mode") then
 				itemstack:take_item()
