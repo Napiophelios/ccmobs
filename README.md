@@ -43,6 +43,6 @@ With a right click on mobs:
 
 =====================
 
-![Preview](https://raw.githubusercontent.com/Napiophelios/ccmobs/master/screenshot.png)
+![Preview](https://raw.githubusercontent.com/Napiophelios/ccmobs/master/preview.png)
 
 =====================
