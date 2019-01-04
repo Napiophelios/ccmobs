@@ -7,8 +7,7 @@
 
 [RHR's CUTE CUBIC MOBS Github Repository](https://github.com/RHRhino/mt_mods/tree/master/ccmobs)
 
-## License of code: MIT
-## License of textures: MIT
+## License: MIT
 
 ## depends :
 * default
@@ -21,8 +20,9 @@
 * goat
 * pig
 * sheep
-* rockmonster
-* treemonster
+* dirt monster
+* rock monster
+* tree monster
 
 ## This mod adds the following items:
 * animal cage
