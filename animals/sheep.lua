@@ -1,7 +1,7 @@
 --
 --SHEEP
 --
-minetest.register_node("ccmobs:sheep_block", {
+minetest.register_node("ccmobs2:sheep_block", {
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
@@ -17,12 +17,12 @@ minetest.register_node("ccmobs:sheep_block", {
 			{-0.0625, -0.1875, -0.5, 0.0625, 0.0625, -0.4375},
 		},
 	},
-	tiles = {"ccmobs_sheep_top.png", "ccmobs_sheep_bottom.png", "ccmobs_sheep_right_side.png",
-    "ccmobs_sheep_left_side.png", "ccmobs_sheep_front.png", "ccmobs_sheep_back.png"},
+	tiles = {"ccmobs2_sheep_top.png", "ccmobs2_sheep_bottom.png", "ccmobs2_sheep_right_side.png",
+    "ccmobs2_sheep_left_side.png", "ccmobs2_sheep_front.png", "ccmobs2_sheep_back.png"},
     groups = {not_in_creative_inventory = 1},
 })
 
-minetest.register_node("ccmobs:sheep_shaved", {
+minetest.register_node("ccmobs2:sheep_shaved", {
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
@@ -38,69 +38,101 @@ minetest.register_node("ccmobs:sheep_shaved", {
 			{0.0625, -0.5, -0.0625, 0.25, -0.25, 0.125},
 		},
 	},
-	tiles = {"ccmobs_sheep_shaved_top.png", "ccmobs_sheep_bottom.png", "ccmobs_sheep_shaved_right_side.png",
-    "ccmobs_sheep_shaved_left_side.png", "ccmobs_sheep_shaved_front.png", "ccmobs_sheep_shaved_back.png"},
+	tiles = {"ccmobs2_sheep_shaved_top.png", "ccmobs2_sheep_bottom.png", "ccmobs2_sheep_shaved_right_side.png",
+    "ccmobs2_sheep_shaved_left_side.png", "ccmobs2_sheep_shaved_front.png", "ccmobs2_sheep_shaved_back.png"},
     groups = {not_in_creative_inventory = 1},
 })
 
 
-mobs:register_mob("ccmobs:sheep", {
+mobs:register_mob("ccmobs2:sheep", {
 	type = "animal",
-	hp_max = 4,
+	passive = true,
+    hp_min = 4,
+    hp_max = 8,
+    armor = 200,
 	collisionbox = {-0.525, -0.585, -0.525, 0.525, 0.325, 0.525},
 	visual = "wielditem",
 	visual_size = {x=0.75, y=0.75},
-	textures = {"ccmobs:sheep_block"},
+	textures = {"ccmobs2:sheep_block"},
+    --gotten_texture = {"ccmobs2:sheep_shaved"},
 	makes_footstep_sound = false,
 	walk_velocity = 0.1,
-    run_velocity = 0.2,
+    run_velocity = 0.75,
+    runaway = true,
+    pushable = true,
 	jump = false,
-	armor = 100,
 	drops = {
-		{name = "ccmobs:meat_raw",
+		{name = "mobs:meat_raw",
 		chance = 1,
 		min = 1,
 		max = 1,},
 		},
 	drawtype = "front",
 	water_damage = 2,
-	lava_damage = 4,
+	lava_damage = 6,
 	light_damage = 0,
     sounds = {
-		random = "ccmobs_sheep",
+		random = "ccmobs2_sheep",
 	},
-	on_rightclick = function(self, clicker)
-		tool = clicker:get_wielded_item():get_name()
-		if tool == "ccmobs:cage" then
-				clicker:get_inventory():remove_item("main", "ccmobs:cage")
-				clicker:get_inventory():add_item("main", "ccmobs:sheep")
-                minetest.sound_play("ccmobs_sheep",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
-				self.object:remove()
-		elseif clicker:get_inventory() and not self.empty then
+    animation = {
+			speed_normal = 15,
+			speed_run = 15,
+			stand_start = 0,
+			stand_end = 80,
+			walk_start = 81,
+			walk_end = 100,
+		},
+    follow = {"farming:wheat", "default:grass_1"},
+    view_range = 4,
+    replace_rate = 10,
+    replace_what = {
+        {"group:grass", "air", -1},
+        {"default:dirt_with_grass", "default:dirt", -2}
+    },
+    fear_height = 3,
+    on_replace = function(self, pos, oldnode, newnode)
+
+        self.food = (self.food or 0) + 1
+
+        -- if sheep replaces 8x grass then it regrows wool
+        if self.food >= 8 then
+
+            self.food = 0
+            self.gotten = false
+
+            self.object:set_properties({
+                textures = {"ccmobs2:sheep_block"},
+                })
+        end
+    end,
+    on_rightclick = function(self, clicker)
+    tool = clicker:get_wielded_item():get_name()
+
+        --are we feeding?
+        if mobs:feed_tame(self, clicker, 8, true, true) then
+
+            --if fed 7x grass or wheat then sheep regrows wool
+            if self.food and self.food > 6 then
+
+                self.gotten = false
+
+                self.object:set_properties({
+                    textures = {"ccmobs2:sheep_block"},
+                })
+            end
+
+            return
+        end
+
+    
+		if tool == "mobs:shears" and
+            clicker:get_inventory() and not self.empty then
 			self.empty = true
 				clicker:get_inventory():add_item("main", "wool:white")
-                minetest.sound_play("ccmobs_sheep_hurt",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
+                minetest.sound_play("ccmobs2_sheep_hurt",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
 				self.object:set_properties({
-					textures = {"ccmobs:sheep_shaved"},
+					textures = {"ccmobs2:sheep_shaved"},
 				})
 		end
-	end,
-})
-
-minetest.register_craftitem("ccmobs:sheep", {
-	description = "Sheep  Spawnegg",
-	inventory_image = "ccmobs_spawnegg_sheep.png",
-	on_place = function(itemstack, placer, pointed_thing)
-		if pointed_thing.above then
-			minetest.env:add_entity(pointed_thing.above, "ccmobs:sheep")
-            minetest.sound_play("ccmobs_sheep",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
-			if minetest.setting_getbool("creative_mode") then
-				itemstack:take_item()
-			else
-				itemstack:take_item()
-				placer:get_inventory():add_item("main", "ccmobs:cage")
-			end
-		end
-		return itemstack
-	end,
-})
+    end
+    })
