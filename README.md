@@ -1,5 +1,5 @@
 
-# CUTE CUBIC MOBS [ccmobs]
+# CUTE CUBIC MOBS 2 [ccmobs2]
 
 ## This is a fork of RHR's Cute Cubic Mobs [ccmobs]
 
@@ -8,11 +8,11 @@
 [RHR's CUTE CUBIC MOBS Github Repository](https://github.com/RHRhino/mt_mods/tree/master/ccmobs)
 
 ## License of code: MIT
-## License of textures: MIT
+## License of textures: CC-BY-4.0 
 
 ## depends :
 * default
-* mobs_redo
+* [mobs redo](https://notabug.org/TenPlus1/mobs_redo)
 * bucket
 * wool
 
@@ -21,11 +21,11 @@
 * goat
 * pig
 * sheep
-* rockmonster
-* treemonster
+* dirt monster
+* rock monster
+* tree monster
 
 ## This mod adds the following items:
-* animal cage
 * milk
 * raw pork chop
 * cooked pork chop
