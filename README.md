@@ -1,6 +1,6 @@
 =====================
 
-# CUTE CUBIC MOBS [ccmobs2]
+# CUTE CUBIC MOBS [ccmobs]
 
 ## This is a fork of RHR's Cute Cubic Mobs [ccmobs]
 
