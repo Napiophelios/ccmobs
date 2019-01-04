@@ -24,13 +24,13 @@
 * rockmonster
 * treemonster
 
-##This mod adds the following items:
+## This mod adds the following items:
 * animal cage
 * milk
 * raw pork chop
 * cooked pork chop
 
-##With a right click on mobs:
+## With a right click on mobs:
 * You can catch monsters with an animal cage.
 * You can shave sheep for wool.
 * You can milk cows and goats with a bucket.
