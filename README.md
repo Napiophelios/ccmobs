@@ -1,8 +1,8 @@
 =====================
 
-#CUTE CUBIC MOBS [ccmobs2]
+# CUTE CUBIC MOBS [ccmobs2]
 
-##This is a fork of RHR's Cute Cubic Mobs [ccmobs]
+## This is a fork of RHR's Cute Cubic Mobs [ccmobs]
 
 [RHR's CUTE CUBIC MOBS Forum Topic](https://forum.minetest.net/viewtopic.php?t=9472)
 
@@ -10,12 +10,12 @@
 
 =====================
 
-##License of code: MIT
-##License of textures: MIT
+## License of code: MIT
+## License of textures: MIT
 
 =====================
 
-##depends :
+## depends :
 * default
 * mobs_redo
 * bucket
@@ -23,7 +23,7 @@
 
 =====================
 
-##This mod adds the following mobs:
+## This mod adds the following mobs:
 * cow
 * goat
 * pig
