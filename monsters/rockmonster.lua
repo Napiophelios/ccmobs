@@ -88,15 +88,6 @@ mobs:register_mob("ccmobs2:rockmonster", {
         shoot_start = 36,
 		shoot_end = 48,
 	},
-	on_rightclick = function(self, clicker)
-		tool = clicker:get_wielded_item():get_name()
-		if tool == "ccmobs2:cage" then
-                minetest.sound_play("ccmobs2_rockmonster",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
-				clicker:get_inventory():remove_item("main", "ccmobs2:cage")
-				clicker:get_inventory():add_item("main", "ccmobs2:rockmonster_egg")
-				self.object:remove()
-		end
-	end,
 })
 
 -- boulder (weapon)

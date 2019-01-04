@@ -7,7 +7,8 @@
 
 [RHR's CUTE CUBIC MOBS Github Repository](https://github.com/RHRhino/mt_mods/tree/master/ccmobs)
 
-## License: MIT
+## License of code: MIT
+## License of textures: MIT
 
 ## depends :
 * default
@@ -20,9 +21,8 @@
 * goat
 * pig
 * sheep
-* dirt monster
-* rock monster
-* tree monster
+* rockmonster
+* treemonster
 
 ## This mod adds the following items:
 * animal cage
@@ -31,7 +31,6 @@
 * cooked pork chop
 
 ## With a right click on mobs:
-* You can catch monsters with an animal cage.
 * You can shave sheep for wool.
 * You can milk cows and goats with a bucket.
 

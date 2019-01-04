@@ -135,21 +135,6 @@ if TREEMONSTER_SPAWN then
     })
 end
 
-minetest.register_craft({
-	output = "ccmobs2:cage",
-	recipe = {
-		{"group:stick", "group:stick", "group:stick"},
-		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
-		{"group:stick", "group:stick", "group:stick"}
-	},
-})
-
-minetest.register_craftitem("ccmobs2:cage", {
-	description = "Monster Cage",
-	inventory_image = "ccmobs2_cage.png"
-})
-
-
 minetest.register_craftitem("ccmobs2:bucket_milk", {
 	description = "Bucket of Milk",
 	inventory_image = "ccmobs2_bucket_milk.png",

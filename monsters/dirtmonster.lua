@@ -69,15 +69,6 @@ mobs:register_mob("ccmobs2:dirtmonster", {
         shoot_start = 10,
 		shoot_end = 30,
 	},
-	on_rightclick = function(self, clicker)
-		tool = clicker:get_wielded_item():get_name()
-		if tool == "ccmobs2:cage" then
-                minetest.sound_play("ccmobs2_dirtmonster",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
-				clicker:get_inventory():remove_item("main", "ccmobs2:cage")
-				clicker:get_inventory():add_item("main", "ccmobs2:dirtmonster_egg")
-				self.object:remove()
-		end
-	end,
 })
 
 -- dirt clump (weapon)
