@@ -1,4 +1,3 @@
-=====================
 
 # CUTE CUBIC MOBS [ccmobs]
 
@@ -8,20 +7,14 @@
 
 [RHR's CUTE CUBIC MOBS Github Repository](https://github.com/RHRhino/mt_mods/tree/master/ccmobs)
 
-=====================
-
 ## License of code: MIT
 ## License of textures: MIT
-
-=====================
 
 ## depends :
 * default
 * mobs_redo
 * bucket
 * wool
-
-=====================
 
 ## This mod adds the following mobs:
 * cow
@@ -42,8 +35,5 @@
 * You can shave sheep for wool.
 * You can milk cows and goats with a bucket.
 
-=====================
+![Preview](https://raw.githubusercontent.com/Napiophelios/ccmobs/master/screenshot.png)
 
-![Preview](https://raw.githubusercontent.com/Napiophelios/ccmobs/master/new_preview.png)
-
-=====================
