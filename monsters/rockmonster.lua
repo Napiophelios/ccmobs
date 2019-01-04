@@ -1,7 +1,8 @@
+
 --
 --Rockmonster
 --
-minetest.register_node("ccmobs:rockmonster_block", {
+minetest.register_node("ccmobs2:rockmonster_block", {
 	drawtype = "nodebox",
 	node_box = {
 		type = "fixed",
@@ -25,64 +26,106 @@ minetest.register_node("ccmobs:rockmonster_block", {
 			{-0.292365, -0.1875, -0.198212, 0.292365, 0.125, 0.215763},
 		},
 	},
-	tiles = {"ccmobs_rockmonster_top.png", "ccmobs_rockmonster_bottom.png", "ccmobs_rockmonster_right_side.png",
-    "ccmobs_rockmonster_left_side.png", "ccmobs_rockmonster_front.png", "ccmobs_rockmonster_back.png"},
+	tiles = {"ccmobs2_rockmonster_top.png", "ccmobs2_rockmonster_bottom.png", "ccmobs2_rockmonster_right_side.png",
+    "ccmobs2_rockmonster_left_side.png", "ccmobs2_rockmonster_front.png", "ccmobs2_rockmonster_back.png"},
     groups = {not_in_creative_inventory = 1},
 })
 
-mobs:register_mob("ccmobs:rockmonster", {
+mobs:register_mob("ccmobs2:rockmonster", {
 	type = "monster",
-	hp_max = 10,
+    passive = false,
+	damage = 4,
+	attack_type = "dogshoot",
+	dogshoot_switch = 1,
+	dogshoot_count_max = 12, -- shoot for 10 seconds
+	dogshoot_count2_max = 3, -- dogfight for 3 seconds
+	reach = 3,
+	shoot_interval = 2.2,
+	arrow = "ccmobs2:boulder",
+	shoot_offset = 1,
+	pathfinding = false,
+	hp_min = 12,
+	hp_max = 35,
+	armor = 80,
 	collisionbox = {-1.2, -1.7, -1.2, 1.2, 1.7, 1.2},
 	visual = "wielditem",
-	textures = {"ccmobs:rockmonster_block"},
+	textures = {"ccmobs2:rockmonster_block"},
 	visual_size = {x = 2.0, y = 2.25},
-	makes_footstep_sound = false,
-	view_range = 10,
-	walk_velocity = 0.5,
-	run_velocity = 2,
-	damage = 3,
-	drops = {
-		{name = "default:stone",
-		chance = 1,
-		min = 2,
-		max = 5,},
-	},
-	light_resistant = true,
-	armor = 80,
-	drawtype = "front",
-	water_damage = 0,
-	lava_damage = 0,
-	light_damage = 0,
-	attack_type = "dogfight",
+    blood_texture = "default_clay_lump.png",
+	makes_footstep_sound = true,
     sounds = {
-        random = "ccmobs_rockmonster",
+        random = "ccmobs2_rockmonster",
+        shoot_attack = "ccmobs2_rockmonster",
+        shoot_explode = "default_place_node_hard",
+	},
+	walk_velocity = 0.5,
+	run_velocity = 1.25,
+	jump_height = 0,
+	stepheight = 1.1,
+	floats = 0,
+	view_range = 15,
+	drops = {
+		{name = "default:cobble", chance = 1, min = 0, max = 2},
+		{name = "default:coal_lump", chance = 3, min = 0, max = 2},
+		{name = "default:stone", chance = 5, min = 0, max = 1},
+	},
+	water_damage = 0,
+	lava_damage = 1,
+	light_damage = 0.5,
+    fall_damage = 1,
+    fear_height = 5,
+	animation = {
+		speed_normal = 15,
+		speed_run = 15,
+		stand_start = 0,
+		stand_end = 14,
+		walk_start = 15,
+		walk_end = 38,
+		run_start = 40,
+		run_end = 63,
+		punch_start = 40,
+		punch_end = 63,
+        shoot_start = 36,
+		shoot_end = 48,
 	},
 	on_rightclick = function(self, clicker)
 		tool = clicker:get_wielded_item():get_name()
-		if tool == "ccmobs:cage" then
-                minetest.sound_play("ccmobs_rockmonster",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
-				clicker:get_inventory():remove_item("main", "ccmobs:cage")
-				clicker:get_inventory():add_item("main", "ccmobs:rockmonster")
+		if tool == "ccmobs2:cage" then
+                minetest.sound_play("ccmobs2_rockmonster",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
+				clicker:get_inventory():remove_item("main", "ccmobs2:cage")
+				clicker:get_inventory():add_item("main", "ccmobs2:rockmonster_egg")
 				self.object:remove()
 		end
 	end,
 })
 
-minetest.register_craftitem("ccmobs:rockmonster", {
-	description = "Rockmonster  Spawnegg",
-	inventory_image = "ccmobs_spawnegg_rockmonster.png",
-	on_place = function(itemstack, placer, pointed_thing)
-		if pointed_thing.above then
-            minetest.sound_play("ccmobs_rockmonster",{pos=pos, max_hear_distance=3, gain=0.5, loop=false})
-			minetest.env:add_entity(pointed_thing.above, "ccmobs:rockmonster")
-			if minetest.setting_getbool("creative_mode") then
-				itemstack:take_item()
-			else
-				itemstack:take_item()
-				placer:get_inventory():add_item("main", "ccmobs:cage")
-			end
-		end
-		return itemstack
+-- boulder (weapon)
+mobs:register_arrow("ccmobs2:boulder", {
+	visual = "sprite",
+	visual_size = {x = 1.5, y = 1.5},
+	textures = {"ccmobs2_boulder.png"},
+	collisionbox = {-0.1, -0.1, -0.1, 0.1, 0.1, 0.1},
+	velocity = 15,
+
+	on_activate = function(self, staticdata, dtime_s)
+		self.object:set_armor_groups({immortal = 1, fleshy = 100})
 	end,
+
+	hit_player = function(self, player)
+		player:punch(self.object, 1.0, {
+			full_punch_interval = 1.0,
+			damage_groups = {fleshy = 8},
+		}, nil)
+	end,
+
+	hit_mob = function(self, player)
+		player:punch(self.object, 1.0, {
+			full_punch_interval = 1.0,
+			damage_groups = {fleshy = 8},
+		}, nil)
+	end,
+
+	hit_node = function(self, pos, node)
+		self.object:remove()
+	end
 })

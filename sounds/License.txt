@@ -1,5 +1,5 @@
 --------------------------------------------
-file name:  nbea_sheep.ogg / nbea_sheep_hurt.ogg
+file name:  ccmobs2_sheep.ogg / ccmobs2_sheep_hurt.ogg
 original file name: sheepHit.flac / sheepBleet.flac
 Author: Blender Foundation
 http://opengameart.org/content/sheep-sound-bleats-yo-frankie

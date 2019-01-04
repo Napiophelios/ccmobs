@@ -1,45 +1,46 @@
 =====================
 
-#CUTE CUBIC MOBS [ccmobs]
+#CUTE CUBIC MOBS [ccmobs2]
 
-This is a fork of RHR's Cute Cubic Mobs [ccmobs]
+##This is a fork of RHR's Cute Cubic Mobs [ccmobs]
 
-RHR's CUTE CUBIC MOBS Forum Topic :
-https://forum.minetest.net/viewtopic.php?t=9472
+[RHR's CUTE CUBIC MOBS Forum Topic](https://forum.minetest.net/viewtopic.php?t=9472)
 
-RHR's CUTE CUBIC MOBS Github Repository :
-https://github.com/RHRhino/mt_mods/tree/master/ccmobs
+[RHR's CUTE CUBIC MOBS Github Repository](https://github.com/RHRhino/mt_mods/tree/master/ccmobs)
 
-This mod uses PilzAdam's simple mob api.
+=====================
 
-- License of code: WTFPL
-- License of textures: WTFPL
+##License of code: MIT
+##License of textures: MIT
 
 =====================
 
 ##depends :
-- default
+* default
+* mobs_redo
+* bucket
+* wool
 
 =====================
 
-This mod adds the following mobs:
-- cow
-- goat
-- pig
-- sheep
-- rockmonster
-- treemonster
+##This mod adds the following mobs:
+* cow
+* goat
+* pig
+* sheep
+* rockmonster
+* treemonster
 
-This mod adds the following items:
-- animal cage
-- milk
-- raw meat
-- cooked meat
+##This mod adds the following items:
+* animal cage
+* milk
+* raw pork chop
+* cooked pork chop
 
-With a right click on mobs:
-- You can catch mobs with an animal cage.
-- You can shave sheep for wool.
-- You can milk cows and goats with a bucket.
+##With a right click on mobs:
+* You can catch monsters with an animal cage.
+* You can shave sheep for wool.
+* You can milk cows and goats with a bucket.
 
 =====================
 
