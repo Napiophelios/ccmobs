@@ -32,7 +32,7 @@ mobs:register_mob("ccmobs2:dirtmonster", {
 	hp_min = 2,
 	hp_max = 4,
 	armor = 300,
-	collisionbox = {-0.525, -0.585, -0.525, 0.525, 0.325, 0.525},
+	collisionbox = {-0.3125, -0.5, -0.3125, 0.3125, 0.5, 0.3125},
 	visual = "wielditem",
 	textures = {"ccmobs2:dirtmonster_block"},
 	visual_size = {x = 1, y = 1},
