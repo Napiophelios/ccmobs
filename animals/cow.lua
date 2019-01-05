@@ -29,6 +29,30 @@ minetest.register_node("ccmobs2:cow_block", {
     groups = {not_in_creative_inventory = 1},
 })
 
+minetest.register_node("ccmobs2:cow_block2", {
+	drawtype = "nodebox",
+	node_box = {
+		type = "fixed",
+		fixed = {
+            {-0.3125, -0.25, -0.4375, 0.3125, 0.3125, 0.1875},
+            {-0.1875, -0.0625, 0.1875, 0.1875, 0.1875, 0.25},
+            {-0.1875, -0.125, 0.25, 0.1875, 0.125, 0.5625},
+            {-0.3125, 0.125, 0.25, 0.3125, 0.1875, 0.375},
+            {-0.1875, -0.1875, 0.25, 0.1875, 0.1875, 0.4375},
+            {-0.125, -0.25, 0.1875, 0.125, 0.1875, 0.3125},
+            {-0.25, -0.5, -0.0625, -0.0625, -0.1875, 0.125},
+            {0.0625, -0.5, -0.0625, 0.25, -0.0625, 0.125},
+            {-0.25, -0.5, -0.375, -0.0625, -0.1875, -0.1875},
+            {0.0625, -0.5, -0.375, 0.25, -0.25, -0.1875},
+            {-0.0276272, -0.1875, -0.478997, 0.0376734, 0.1875, -0.4375},
+            {-0.125, 0.1875, 0.1875, 0.125, 0.25, 0.375}
+		},
+	},
+	tiles = {"ccmobs2_cow_top2.png", "ccmobs2_cow_bottom2.png", "ccmobs2_cow_right_side2.png",
+    "ccmobs2_cow_left_side2.png", "ccmobs2_cow_front2.png", "ccmobs2_cow_back2.png"},
+    groups = {not_in_creative_inventory = 1},
+})
+
 mobs:register_mob("ccmobs2:cow", {
 	type = "animal",
 	passive = false,
@@ -42,18 +66,21 @@ mobs:register_mob("ccmobs2:cow", {
 	collisionbox = {-0.9, -1, -1, 0.9, 0.9, 1},
 	visual = "wielditem",
 	visual_size = {x = 1.355, y = 1.355},
-	textures = {"ccmobs2:cow_block"},
+	textures = {
+        {"ccmobs2:cow_block"},
+        {"ccmobs2:cow_block2"},
+    },
 	makes_footstep_sound = false,
 	walk_velocity = 0.25,
     run_velocity = 0.5,
 	jump = false,
     pushable = true,
 	drops = {
-		{name = "mobs:meat_raw",
+		{name = "ccmobs2:meat_raw",
 		chance = 1,
 		min = 1,
 		max = 3,},
-        {name = "mobs:leather",
+        {name = "ccmobs2:leather",
 		chance = 1,
 		min = 1,
 		max = 2,}
@@ -87,7 +114,7 @@ mobs:register_mob("ccmobs2:cow", {
     end
 
     if mobs:protect(self, clicker) then return end
-    if mobs:capture_mob(self, clicker, 0, 5, 60, false, nil) then return end
+    if mobs:capture_mob(self, clicker, 99, nil, "ccmobs2:cow") then return end
 
     local tool = clicker:get_wielded_item()
     local name = clicker:get_player_name()

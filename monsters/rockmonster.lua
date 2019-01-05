@@ -50,7 +50,7 @@ mobs:register_mob("ccmobs2:rockmonster", {
 	collisionbox = {-1.2, -1.7, -1.2, 1.2, 1.7, 1.2},
 	visual = "wielditem",
 	textures = {"ccmobs2:rockmonster_block"},
-	visual_size = {x = 2.0, y = 2.25},
+	visual_size = {x = 2.0, y = 2.265},
     blood_texture = "default_clay_lump.png",
 	makes_footstep_sound = true,
     sounds = {

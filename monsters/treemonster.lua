@@ -52,7 +52,7 @@ mobs:register_mob("ccmobs2:treemonster", {
     sounds = {
 		random = "ccmobs2_treemonster",
 	},
-		walk_velocity = 1,
+    walk_velocity = 1,
 	run_velocity = 3,
 	jump = true,
 	view_range = 15,
@@ -62,7 +62,7 @@ mobs:register_mob("ccmobs2:treemonster", {
 		{name = "default:apple", chance = 4, min = 1, max = 2},
 	},
 	water_damage = 0,
-	lava_damage = 3,
+	lava_damage = 5,
 	light_damage = 1,
 	fall_damage = 1,
     fear_height = 5,

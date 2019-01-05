@@ -35,7 +35,7 @@ mobs:register_mob("ccmobs2:dirtmonster", {
 	collisionbox = {-0.3125, -0.5, -0.3125, 0.3125, 0.5, 0.3125},
 	visual = "wielditem",
 	textures = {"ccmobs2:dirtmonster_block"},
-	visual_size = {x = 1, y = 1},
+	visual_size = {x = 0.65, y = 0.65},
     blood_texture = "default_dirt.png",
 	makes_footstep_sound = false,
     sounds = {
@@ -44,8 +44,6 @@ mobs:register_mob("ccmobs2:dirtmonster", {
 	},
 	walk_velocity = 0.05,
 	run_velocity = 0.25,
-    runaway = true,
-    pushable = true,
 	jump = false,
 	jump_height = 0,
 	stepheight = 0,
