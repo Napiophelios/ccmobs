@@ -135,9 +135,11 @@ if TREEMONSTER_SPAWN then
     })
 end
 
+-- bucket of milk
 minetest.register_craftitem("ccmobs2:bucket_milk", {
 	description = "Bucket of Milk",
 	inventory_image = "ccmobs2_bucket_milk.png",
-	groups = {not_in_creative_inventory = 1},
 	stack_max = 1,
+	on_use = minetest.item_eat(8, 'bucket:bucket_empty'),
 })
+
