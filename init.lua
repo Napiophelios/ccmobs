@@ -1,28 +1,24 @@
-
 --
+-- ccmobs2 
+-- License:MIT
+--
+
+
 --SPAWNING: [true --or-- false]
---
 local COW_SPAWN = true
-local DIRTMONSTER_SPAWN = true
-local GOAT_SPAWN = true
-local PIG_SPAWN = true
-local ROCKMONSTER_SPAWN = true
+local DIRTMONSTER_SPAWN = false
+local GOAT_SPAWN = false
+local PIG_SPAWN = false
+local ROCKMONSTER_SPAWN = false
 local SHEEP_SPAWN = true
-local TREEMONSTER_SPAWN = true
+local TREEMONSTER_SPAWN = false
 
---dofile(minetest.get_modpath("ccmobs").."/api.lua")
-dofile(minetest.get_modpath("ccmobs2").."/animals/cow.lua")
-dofile(minetest.get_modpath("ccmobs2").."/monsters/dirtmonster.lua")
-dofile(minetest.get_modpath("ccmobs2").."/animals/goat.lua")
-dofile(minetest.get_modpath("ccmobs2").."/animals/pig.lua")
-dofile(minetest.get_modpath("ccmobs2").."/monsters/rockmonster.lua")
-dofile(minetest.get_modpath("ccmobs2").."/animals/sheep.lua")
-dofile(minetest.get_modpath("ccmobs2").."/monsters/treemonster.lua")
 
 --mobs:register_spawn
-
 if COW_SPAWN then
-	mobs:register_egg("ccmobs2:cow", "Cow", "ccmobs2_spawnegg_cow.png", 0)
+    dofile(minetest.get_modpath("ccmobs2").."/animals/cow.lua")
+
+    mobs:register_egg("ccmobs2:cow", "Cow", "ccmobs2_spawnegg_cow.png", 0)
 
     mobs:spawn({
         name = "ccmobs2:cow",
@@ -38,7 +34,9 @@ if COW_SPAWN then
 end
 
 if DIRTMONSTER_SPAWN then
-	mobs:register_egg("ccmobs2:dirtmonster", "Dirt Monster", "ccmobs2_spawnegg_dirtmonster.png", 0)
+    dofile(minetest.get_modpath("ccmobs2").."/monsters/dirtmonster.lua")
+
+    mobs:register_egg("ccmobs2:dirtmonster", "Dirt Monster", "ccmobs2_spawnegg_dirtmonster.png", 0)
 
     mobs:spawn({
         name = "ccmobs2:dirtmonster",
@@ -54,8 +52,10 @@ if DIRTMONSTER_SPAWN then
 end
 
 if GOAT_SPAWN then
-	mobs:register_egg("ccmobs2:goat", "Goat", "ccmobs2_spawnegg_goat.png", 0)
-                
+    dofile(minetest.get_modpath("ccmobs2").."/animals/goat.lua")
+
+    mobs:register_egg("ccmobs2:goat", "Goat", "ccmobs2_spawnegg_goat.png", 0)
+
     mobs:spawn({
         name = "ccmobs2:goat",
         nodes = {"default:dirt_with_grass"},
@@ -70,7 +70,9 @@ if GOAT_SPAWN then
 end
 
 if PIG_SPAWN then
-	mobs:register_egg("ccmobs2:pig", "Pig", "ccmobs2_spawnegg_pig.png", 0)
+    dofile(minetest.get_modpath("ccmobs2").."/animals/pig.lua")
+
+    mobs:register_egg("ccmobs2:pig", "Pig", "ccmobs2_spawnegg_pig.png", 0)
 
     mobs:spawn({
         name = "ccmobs2:pig",
@@ -86,7 +88,9 @@ if PIG_SPAWN then
 end
 
 if SHEEP_SPAWN then
-	mobs:register_egg("ccmobs2:sheep", "Sheep", "ccmobs2_spawnegg_sheep.png", 0)
+    dofile(minetest.get_modpath("ccmobs2").."/animals/sheep.lua")
+
+    mobs:register_egg("ccmobs2:sheep", "Sheep", "ccmobs2_spawnegg_sheep.png", 0)
 
     mobs:spawn({
         name = "ccmobs2:sheep",
@@ -102,7 +106,9 @@ if SHEEP_SPAWN then
 end
 
 if ROCKMONSTER_SPAWN then
-	mobs:register_egg("ccmobs2:rockmonster", "Rock Monster", "ccmobs2_spawnegg_rockmonster.png", 0)
+    dofile(minetest.get_modpath("ccmobs2").."/monsters/rockmonster.lua")
+
+    mobs:register_egg("ccmobs2:rockmonster", "Rock Monster", "ccmobs2_spawnegg_rockmonster.png", 0)
 
     mobs:spawn({
         name = "ccmobs2:rockmonster",
@@ -119,7 +125,9 @@ if ROCKMONSTER_SPAWN then
 end
 
 if TREEMONSTER_SPAWN then
-	mobs:register_egg("ccmobs2:treemonster", "Tree Monster", "ccmobs2_spawnegg_treemonster.png", 0)
+    dofile(minetest.get_modpath("ccmobs2").."/monsters/treemonster.lua")
+
+    mobs:register_egg("ccmobs2:treemonster", "Tree Monster", "ccmobs2_spawnegg_treemonster.png", 0)
 
     mobs:spawn({
         name = "ccmobs2:treemonster",
@@ -135,6 +143,7 @@ if TREEMONSTER_SPAWN then
     })
 end
 
+
 -- bucket of milk
 minetest.register_craftitem("ccmobs2:bucket_milk", {
 	description = "Bucket of Milk",
@@ -142,4 +151,3 @@ minetest.register_craftitem("ccmobs2:bucket_milk", {
 	stack_max = 1,
 	on_use = minetest.item_eat(8, 'bucket:bucket_empty'),
 })
-
