@@ -1,6 +1,9 @@
 --
 --Treemonster
 --
+
+ccmobs2 = {}
+
 minetest.register_node("ccmobs2:treemonster_block", {
 	drawtype = "nodebox",
 	node_box = {
@@ -52,7 +55,7 @@ mobs:register_mob("ccmobs2:treemonster", {
     sounds = {
 		random = "ccmobs2_treemonster",
 	},
-    walk_velocity = 1,
+		walk_velocity = 1,
 	run_velocity = 3,
 	jump = true,
 	view_range = 15,
@@ -62,7 +65,7 @@ mobs:register_mob("ccmobs2:treemonster", {
 		{name = "default:apple", chance = 4, min = 1, max = 2},
 	},
 	water_damage = 0,
-	lava_damage = 5,
+	lava_damage = 3,
 	light_damage = 1,
 	fall_damage = 1,
     fear_height = 5,
@@ -78,4 +81,7 @@ mobs:register_mob("ccmobs2:treemonster", {
 		punch_start = 48,
 		punch_end = 62,
 	},
+	on_rightclick = function(self, clicker)
+		ccmobs2:capture_mob(self, clicker, "ccmobs2:treemonster")
+	end,
 })

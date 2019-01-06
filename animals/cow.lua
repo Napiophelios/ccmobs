@@ -1,6 +1,8 @@
 --
 --COW
 --
+ccmobs2 = {}
+
 minetest.register_node("ccmobs2:cow_block", {
 	drawtype = "nodebox",
 	node_box = {
@@ -70,17 +72,17 @@ mobs:register_mob("ccmobs2:cow", {
         {"ccmobs2:cow_block"},
         {"ccmobs2:cow_block2"},
     },
-	makes_footstep_sound = false,
+	makes_footstep_sound = true,
 	walk_velocity = 0.25,
     run_velocity = 0.5,
 	jump = false,
     pushable = true,
 	drops = {
-		{name = "ccmobs2:meat_raw",
+		{name = "mobs:meat_raw",
 		chance = 1,
 		min = 1,
 		max = 3,},
-        {name = "ccmobs2:leather",
+        {name = "mobs:leather",
 		chance = 1,
 		min = 1,
 		max = 2,}
@@ -114,7 +116,7 @@ mobs:register_mob("ccmobs2:cow", {
     end
 
     if mobs:protect(self, clicker) then return end
-    if mobs:capture_mob(self, clicker, 99, nil, "ccmobs2:cow") then return end
+    if ccmobs2:capture_mob(self, clicker, "ccmobs2:cow") then return end
 
     local tool = clicker:get_wielded_item()
     local name = clicker:get_player_name()
@@ -161,3 +163,4 @@ mobs:register_mob("ccmobs2:cow", {
 		end
 	end,
 })
+

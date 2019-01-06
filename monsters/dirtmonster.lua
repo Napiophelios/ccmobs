@@ -2,6 +2,9 @@
 --
 --dirtmonster
 --
+
+ccmobs2 = {}
+
 minetest.register_node("ccmobs2:dirtmonster_block", {
 	drawtype = "nodebox",
 	node_box = {
@@ -44,6 +47,8 @@ mobs:register_mob("ccmobs2:dirtmonster", {
 	},
 	walk_velocity = 0.05,
 	run_velocity = 0.25,
+    runaway = true,
+    pushable = true,
 	jump = false,
 	jump_height = 0,
 	stepheight = 0,
@@ -67,6 +72,9 @@ mobs:register_mob("ccmobs2:dirtmonster", {
         shoot_start = 10,
 		shoot_end = 30,
 	},
+    on_rightclick = function(self, clicker)
+		ccmobs2:capture_mob(self, clicker, "ccmobs2:dirtmonster")
+	end,
 })
 
 -- dirt clump (weapon)

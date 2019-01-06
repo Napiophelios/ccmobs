@@ -2,6 +2,9 @@
 --
 --Rockmonster
 --
+
+ccmobs2 = {}
+
 minetest.register_node("ccmobs2:rockmonster_block", {
 	drawtype = "nodebox",
 	node_box = {
@@ -50,7 +53,7 @@ mobs:register_mob("ccmobs2:rockmonster", {
 	collisionbox = {-1.2, -1.7, -1.2, 1.2, 1.7, 1.2},
 	visual = "wielditem",
 	textures = {"ccmobs2:rockmonster_block"},
-	visual_size = {x = 2.0, y = 2.265},
+	visual_size = {x = 2.0, y = 2.25},
     blood_texture = "default_clay_lump.png",
 	makes_footstep_sound = true,
     sounds = {
@@ -88,6 +91,9 @@ mobs:register_mob("ccmobs2:rockmonster", {
         shoot_start = 36,
 		shoot_end = 48,
 	},
+    on_rightclick = function(self, clicker)
+		ccmobs2:capture_mob(self, clicker, "ccmobs2:rockmonster")
+	end,
 })
 
 -- boulder (weapon)

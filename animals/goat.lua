@@ -1,6 +1,9 @@
 --
 --Goat
 --
+
+ccmobs2 = {}
+
 minetest.register_node("ccmobs2:goat_block", {
 	drawtype = "nodebox",
 	node_box = {
@@ -86,7 +89,7 @@ mobs:register_mob("ccmobs2:goat", {
     end
 
     if mobs:protect(self, clicker) then return end
-    if mobs:capture_mob(self, clicker, 0, 5, 60, false, nil) then return end
+    if ccmobs2:capture_mob(self, clicker, "ccmobs2:goat") then return end
 
     local tool = clicker:get_wielded_item()
     local name = clicker:get_player_name()

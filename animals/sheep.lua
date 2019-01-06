@@ -1,6 +1,9 @@
 --
 --SHEEP
 --
+
+ccmobs2 = {}
+
 minetest.register_node("ccmobs2:sheep_block", {
 	drawtype = "nodebox",
 	node_box = {
@@ -123,6 +126,9 @@ mobs:register_mob("ccmobs2:sheep", {
 
             return
         end
+
+        if mobs:protect(self, clicker) then return end
+        if ccmobs2:capture_mob(self, clicker, "ccmobs2:sheep") then return end
 
     
 		if tool == "mobs:shears" and

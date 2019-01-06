@@ -1,6 +1,9 @@
 --
 --PIG
 --
+
+ccmobs2 = {}
+
 minetest.register_node("ccmobs2:pig_block", {
 	drawtype = "nodebox",
 	node_box = {
@@ -55,6 +58,9 @@ mobs:register_mob("ccmobs2:pig", {
 	},
     follow = {"default:apple"},
     view_range = 5,
+    on_rightclick = function(self, clicker)
+		ccmobs2:capture_mob(self, clicker, "ccmobs2:pig")
+	end,
 })
 
 -- raw porkchop
